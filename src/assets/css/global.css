@@ -1,0 +1,77 @@
+:root {
+	/* Major Third type scale*/
+	--fnt__max: 3.052rem; /* h1 */
+	--fnt__xxl: 2.441rem; /* h2 */
+	--fnt__xlg: 1.953rem; /* h3 */
+	--fnt__lrg: 1.563rem; /* h4 */
+	--fnt__med:  1.25rem; /* h5 */
+	--fnt__reg:     1rem; /* h6,p,...etc */
+	--fnt__sml:   0.8rem; /* sup,sub,small */
+	--fnt__xsm:  0.64rem; /* ?? */
+	--fnt__xxs: 0.512rem; /* ?? */
+	--fnt__min:  0.41rem; /* ?? */
+}
+
+html {
+  font-size: 16px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 24px;
+  }
+} 
+
+.fnt__max,
+h1 {
+	font-size: var(--fnt__max);
+}
+
+.fnt__xxl,
+h2 {
+	font-size: var(--fnt__xxl);
+}
+
+.fnt__xlg,
+h3 {
+	font-size: var(--fnt__xlg);
+}
+
+.fnt__lrg,
+h4 {
+	font-size: var(--fnt__lrg);
+}
+
+.fnt__med,
+h5 {
+	font-size: var(--fnt__med);
+}
+
+.fnt__reg,
+h6 {
+	font-size: var(--fnt__reg);
+}
+
+.fnt__sml,
+sub,
+sup,
+small {
+	font-size: var(--fnt__sml);
+}
+
+.fnt__xsm {
+	font-size: var(--fnt__xsm);
+}
+
+.fnt__xxs {
+	font-size: var(--fnt__xxs);	
+}
+
+.fnt__min {
+	font-size: var(--fnt__min);	
+}
+
