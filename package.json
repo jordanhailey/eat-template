@@ -2,8 +2,10 @@
   "name": "funky-restaurant",
   "version": "0.0.1",
   "description": "Funky restaurant theme. Created with 11ty by Jordan Hailey",
-  "main": "index.js",
+  "main": "src/index.md",
   "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
