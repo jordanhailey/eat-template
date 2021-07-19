@@ -8,8 +8,11 @@
     <title>{{ title }}</title>
   </head>
   <body>
-	{% block content %}
-	<p>Huh... This page is empty. <a href="/">Try returning to a safe place</a>.</p>
-	{% endblock %}
+    {% include "partials/site-header.html" %}
+    <main tabindex="-1" id="main-content"> 
+    {% block content %}
+      <p>Huh... This page is empty. <a href="/">Try returning to a safe place</a>.</p>
+    {% endblock %}
+    </main>
   </body>
 </html>

@@ -1,5 +1,5 @@
 ---
- title: Funky Restuarant Template
+ title: Eat
  layout: layouts/home.html
 ---
 <p class="fnt__xxl">Type size: xxl</p>
