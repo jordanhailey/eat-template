@@ -109,7 +109,7 @@ small {
 	background: var(--background-col);
 }
 .site-header + * {
-	margin-top: 3rem;
+	margin-top: calc(var(--fnt__max) + 0.5rem);
 }
 
 .site-header__content {
