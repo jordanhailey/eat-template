@@ -1,0 +1,13 @@
+---
+items: # Main navigation links - names and urls
+  - text: Menu
+    url: /menu/
+    children: 
+      - text: Beverage
+        url: /menu/beverage
+      - text: Food
+        url: /menu/food
+  - text: Reservation
+    url: /contact#reservation/
+  - text: About
+    url: /about/
