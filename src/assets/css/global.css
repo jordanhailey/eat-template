@@ -314,8 +314,8 @@ li > a, .sub__list > div > span > a {
 	.sub__list > ul {
 		left: -4px;
 		width: 100%;	
-		background: -webkit-linear-gradient(to right, transparent, var(--nav-background-col) 20%);  /* Chrome 10-25, Safari 5.1-6 */
-		background: linear-gradient(to right, transparent, var(--nav-background-col) 20%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		background: -webkit-linear-gradient(to right, transparent, var(--nav-background-col) 50%);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, transparent, var(--nav-background-col) 50%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
 
 	.hamburger__checkbox ~ .nav__list {
