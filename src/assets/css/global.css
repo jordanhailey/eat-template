@@ -10,6 +10,7 @@
 	--fnt__xsm:  0.64rem; /* ?? */
 	--fnt__xxs: 0.512rem; /* ?? */
 	--fnt__min:  0.41rem; /* ?? */
+	--main__padding: 1rem;
 	--background-col: #eee;
 	--nav-background-col: #FFEFBA;
 }
@@ -24,8 +25,11 @@ body {
 	margin: 0;
 }
 
-body > * {
-	padding: 0 1rem;
+main > *, main > .container.full-bleed > .wrapper > * {
+	padding: 0 var(--main__padding);
+}
+main > .container.full-bleed, main > .container.full-bleed > .wrapper > .full-width {
+	padding: 0;
 }
 
 .fnt__max,
@@ -155,13 +159,13 @@ small {
 	border-bottom-right-radius: 8px;
 }
 
-ul > li {
+.site-header__nav ul > li {
 	margin: var(--li__margin);
 	padding: var(--li__padding); 
 	display: flex;
 }
 
-ul > li:first-child {
+.site-header__nav ul > li:first-child {
 	--li__margin: 0;
 }
 
@@ -222,6 +226,31 @@ justify-content: flex-end;
 	right: 1.5rem;
 	top: 0.5rem;
 }
+
+.grid {
+	display: grid;
+	grid-template-columns: var(--cols);
+}
+
+.hours-of-operations {
+	text-transform: capitalize;
+	width: 100%;
+	border-spacing: 0;
+}
+
+.hours-of-operations th, .hours-of-operations td {
+	padding: 0.25rem 1rem;
+}
+
+.hours-of-operations th {
+	text-align: left;
+	background: #ddd;
+}
+
+.hours-of-operations tr:first-of-type {
+	padding: 0.25rem 0.5rem;
+}
+
 
 @media only screen and (max-width: 900px) {	
 	:root {

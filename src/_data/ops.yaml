@@ -1,0 +1,38 @@
+---
+open:
+  - name: monday 
+    hours: 
+      open: "" 
+      close: ""
+  - name: tuesday - sunday
+    hours: 
+      open: '10am'
+      close: '12am'
+  #- name: wednesday 
+    #hours: 
+      #open: '10am'
+      #close: '12am'
+  #- name: thursday 
+    #hours: 
+      #open: '10am'
+      #close: '12am'
+  #- name: friday 
+    #hours: 
+      #open: '10am'
+      #close: '12am'
+  #- name: saturday 
+    #hours: 
+      #open: '10am'
+      #close: '12am'
+  #- name: sunday 
+    #hours: 
+      #open: '10am'
+      #close: '12am'
+holidays: []
+reservations: false
+manager: 
+  name: Joe Manager
+  email: mailto:management+joe_manager@eatfoo.com
+
+
+
