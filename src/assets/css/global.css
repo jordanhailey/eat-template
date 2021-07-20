@@ -20,6 +20,12 @@ html {
 	font-size: clamp(1rem, 1rem + 2vw, 24px);
 }
 
+html *,
+html *:before,
+html *:after {
+	box-sizing: border-box;
+}
+
 body {
 	background: var(--background-col);
 	margin: 0;
