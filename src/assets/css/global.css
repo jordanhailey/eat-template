@@ -120,11 +120,13 @@ small {
 	background: var(--nav-background-col);  /* fallback for old browsers */
 }
 
+.site-header__content a {
+	text-decoration: none;
+}
 .site-header__logo {
 	grid-area: logo;
 	display: flex;
 	place-items: center;
-	text-decoration: none;
 	font-size: var(--fnt__max);
 }
 
@@ -168,6 +170,10 @@ li > a, .sub__list > div > span > a {
 	padding: 0 1rem;
 	display: flex;
 	justify-content: flex-end;
+}
+
+.site-header__nav > .wrapper {
+justify-content: flex-end;
 }
 
 .sub__list {
