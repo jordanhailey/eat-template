@@ -11,6 +11,7 @@
 	--fnt__xxs: 0.512rem; /* ?? */
 	--fnt__min:  0.41rem; /* ?? */
 	--background-col: #eee;
+	--nav-background-col: #FFEFBA;
 }
 
 
@@ -114,6 +115,7 @@ small {
 .site-header__content {
 	display: grid;
 	grid-template-columns: 1rem [logo-start] 5rem [logo-end] 1fr [nav-start] 10fr [nav-end] 1rem;
+	background: var(--nav-background-col);  /* fallback for old browsers */
 }
 
 .site-header__logo {
@@ -134,36 +136,67 @@ small {
 	place-items: center;
 }
 
-.site-header, .nav__list {
-	list-style-type: none;
+.site-header, .nav__list, .sub__list {
 	display: flex;
 	justify-content: stretch;
 	margin: 0;
 }
 
-.nav__list {
+.site-header__nav ul {
 	--li__margin: 0 0 0 0.5rem;
 	--li__padding: 0 0.5rem;
 	padding: 0;
+	list-style-type: none;
 }
 
-.nav__list > li {
+ul > li {
 	margin: var(--li__margin);
 	padding: var(--li__padding); 
 	display: flex;
 }
 
-.nav__list > li:first-child {
-	margin: 0;
+ul > li:first-child {
+	--li__margin: 0;
 }
 
-.nav__list > li > a {
+li > a, .sub__list > div > span > a {
 	flex: 1 auto;
 	padding: 0 1rem;
 	display: flex;
 	justify-content: flex-end;
 }
 
+.sub__list {
+	flex-direction: column;
+}
+.sub__list > div, .sub__list > div > span {
+	display: flex;
+}
+
+.nav__list > li.sub__list {
+	position: relative;
+}
+.sub__list > ul {
+	visibility: hidden;
+	transform-origin: top;
+	transform: scaleY(0);
+	transition: transform 300ms ease-in-out;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	background: var(--nav-background-col); 
+}
+
+.sub__list > ul > li, .sub__list > ul > li:first-of-type  {
+	--li__margin: 0.5rem 0 0 0;
+}
+
+.sub__list:hover > ul, .sub__list:focus-within > ul {
+	visibility: visible;
+	flex-direction: column;
+	transform: scaleY(1);
+	transition: transform 300ms ease-in-out;
+}
 
 .hamburger__checkbox {
 	width: 1.00rem;
@@ -180,7 +213,7 @@ small {
 	top: 0.5rem;
 }
 
-@media only screen and (max-width: 600px) {	
+@media only screen and (max-width: 900px) {	
 	:root {
 		/* Major Third type scale*/
 		--fnt__max: 1.900rem; /* h1 */
@@ -214,33 +247,52 @@ small {
 
 
 	.hamburger-icon {
-		z-index: -1;
 		display: inline-block;
 		width: 24px;
 		height: 24px;
+		fill: CurrentColor;
 	}
 
-	.hamburger__checkbox:hover ~ .hamburger-icon,
-	.hamburger__checkbox:focus ~ .hamburger-icon {
+	.hamburger__checkbox:hover ~ .hamburger-icon > svg,
+	.hamburger__checkbox:focus ~ .hamburger-icon > svg {
 		transform: scale(1.2);
+		outline: 1px solid #000;
+		transition: transform 200ms ease-in-out 50ms;
 	}
 
 	.hamburger-icon {
 		transition: transform 200ms ease-in-out 100ms;
 	}
 
-	.hamburger__checkbox:checked {
-		/*handle click outside of menu*/
+	.hamburger__checkbox:not(:checked):hover ~ .hamburger-icon:before,
+	.hamburger__checkbox:not(:checked):focus ~ .hamburger-icon:before {
+		transform: scaleX(0.0125);
+	}	
+
+	.hamburger__checkbox ~ .hamburger-icon:before {
+		content: '';
 		position: fixed;
 		height: 100vh;
 		width: 100vw;
+		transform: scaleX(0);
 		top: 0;
 		bottom: 0;
 		right: 0;
 		left: 0;
+		backdrop-filter: blur(1px);
+		background: var(--nav-background-col);  /* fallback for old browsers */
+		background: -webkit-linear-gradient(to right, transparent, #FFEFBA 20%);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, transparent, #FFEFBA 20%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		transition: transform 300ms ease-in-out;
+		transform-origin: right;
+	}
+	.hamburger__checkbox:checked ~ .hamburger-icon:before {
+		/*handle click outside of menu*/
+		transform: scaleX(1);
+		transition: transform 300ms ease-in-out;
 	}
 
-	.hamburger__checkbox:checked ~ .hamburger-icon {
+	.hamburger__checkbox:checked ~ .hamburger-icon > svg {
 		transform:  scale(1.2) rotate(-90deg);
 		transition: transform 200ms ease-in-out 50ms;
 	}
@@ -253,13 +305,16 @@ small {
 		top: calc(2rem + 8px);
 		right: 0;
 		left: 0;
-		background: var(--background-col);
-		border: 4px solid;
+	}
+
+	.sub__list > ul {
+		left: -4px;
+		width: 100%;	
+		background: -webkit-linear-gradient(to right, transparent, var(--nav-background-col) 20%);  /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(to right, transparent, var(--nav-background-col) 20%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 	}
 
 	.hamburger__checkbox ~ .nav__list {
-		--display-setting: none;
-		*display: var(--display-setting);
 		transform: scaleY(0);
 		transition: transform 300ms ease-in-out;
 		transform-origin: top;
@@ -270,7 +325,6 @@ small {
 	}
 
 	.site-header__nav:focus-within .hamburger__checkbox:checked ~ .nav__list {
-		--display-setting: unset;
 		transition: transform 300ms ease-in-out;
 		transform: scaleY(1);
 	} 

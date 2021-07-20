@@ -12,13 +12,25 @@
               <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/>
             </svg>
           </label>
-          <ul class="nav__list">
-            <li>
-              <a href="/">Home</a>
+          <ul class="nav__list open__top">
+          {% for item in navigation.items %}
+            {% if item.children %}
+            <li class="sub__list open__top">
+              <div class="wrapper"><span class="wrapper"><a href="{{item.url}}" {{ helpers.getLinkActiveState(item.url,page.url) | safe }}>{{item.text}}</a></span></div>
+              <ul>
+              {% for subItem in item.children %}
+                <li>
+                  <a href="{{subItem.url}}" {{ helpers.getLinkActiveState(subItem.url,page.url) | safe }}>{{subItem.text}}</a>
+                </li>
+              {% endfor %}
+              </ul>
             </li>
+            {% else %}
             <li>
-              <a href="#menu">Menu</a>
+              <a href="{{item.url}}" {{ helpers.getLinkActiveState(item.url,page.url) | safe }}>{{item.text}}</a>
             </li>
+            {% endif %}
+          {% endfor %}
           </ul>
         </div>
       </nav>
