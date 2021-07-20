@@ -1,7 +1,5 @@
 ---
- title: Eat
- layout: layouts/home.html
+permalink: '/'
 ---
-
 {% include 'partials/operations.html' %}
 
