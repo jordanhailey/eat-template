@@ -83,8 +83,10 @@ small {
 .skip-link {
 	position: absolute;
 	right: 100%;
-	top: 0.5rem;
+	top: 0;
 	z-index: 100;
+	background: var(--nav-background-col);
+	padding: 1rem;
 }
 
 .skip-link:focus {
@@ -145,8 +147,10 @@ small {
 .site-header__nav ul {
 	--li__margin: 0 0 0 0.5rem;
 	--li__padding: 0 0.5rem;
-	padding: 0;
+	padding: 0.5rem;
 	list-style-type: none;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 ul > li {
@@ -266,7 +270,7 @@ li > a, .sub__list > div > span > a {
 
 	.hamburger__checkbox:not(:checked):hover ~ .hamburger-icon:before,
 	.hamburger__checkbox:not(:checked):focus ~ .hamburger-icon:before {
-		transform: scaleX(0.0125);
+		transform: scaleX(0.05);
 	}	
 
 	.hamburger__checkbox ~ .hamburger-icon:before {
@@ -286,7 +290,7 @@ li > a, .sub__list > div > span > a {
 		transition: transform 300ms ease-in-out;
 		transform-origin: right;
 	}
-	.hamburger__checkbox:checked ~ .hamburger-icon:before {
+	.site-header__nav:focus-within .hamburger__checkbox:checked ~ .hamburger-icon:before {
 		/*handle click outside of menu*/
 		transform: scaleX(1);
 		transition: transform 300ms ease-in-out;
