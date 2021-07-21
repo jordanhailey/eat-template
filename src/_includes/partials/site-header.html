@@ -1,39 +1,35 @@
 <a class="skip-link button" href="#main-content">Skip to content</a>
-<header role="banner" class="site-header">
-  <div class="wrapper">
-    <div class="site-header__content">
-      <a href="/" aria-label="{{site.title}}" class="site-header__logo">{{site.title}}</a>
-      <nav class="nav site-header__nav" aria-label="Primary">
-        <div class="wrapper">
-          <input id="mobile-nav-checkbox" name="mobile-nav-checkbox" class="mobile-only hamburger__checkbox" role="switch" type="checkbox" aria-label="display navigation items"/>
-          <label class="mobile-first hamburger-icon" for="mobile-nav-checkbox">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-              <path fill="none" d="M0 0h24v24H0z"/>
-              <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/>
-            </svg>
-          </label>
-          <ul class="nav__list open__top">
-          {% for item in navigation.items %}
-            {% if item.children %}
-            <li class="sub__list open__top">
-              <div class="wrapper"><span class="wrapper"><a href="{{item.url}}" {{ helpers.getLinkActiveState(item.url,page.url) | safe }}>{{item.text}}</a></span></div>
-              <ul>
-              {% for subItem in item.children %}
-                <li>
-                  <a href="{{subItem.url}}" {{ helpers.getLinkActiveState(subItem.url,page.url) | safe }}>{{subItem.text}}</a>
-                </li>
-              {% endfor %}
-              </ul>
-            </li>
-            {% else %}
+<header role="banner" class="site-header ">
+  <div class="container site-header__content">
+    <a href="/" aria-label="{{site.title}}" class="site-header__logo">{{site.title}}</a>
+    <nav class="nav site-header__nav" aria-label="Primary">
+      <input id="mobile-nav-checkbox" name="mobile-nav-checkbox" class="mobile-only hamburger__checkbox" role="switch" type="checkbox" aria-label="display navigation items"/>
+      <label class="mobile-first hamburger-icon" for="mobile-nav-checkbox">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+          <path fill="none" d="M0 0h24v24H0z"/>
+          <path d="M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z"/>
+        </svg>
+      </label>
+      <ul class="nav__list open__top">
+      {% for item in navigation.items %}
+        {% if item.children %}
+        <li class="sub__list open__top">
+          <div class="container"><span class="container"><a href="{{item.url}}" {{ helpers.getLinkActiveState(item.url,page.url) | safe }}>{{item.text}}</a></span></div>
+          <ul>
+          {% for subItem in item.children %}
             <li>
-              <a href="{{item.url}}" {{ helpers.getLinkActiveState(item.url,page.url) | safe }}>{{item.text}}</a>
+              <a href="{{subItem.url}}" {{ helpers.getLinkActiveState(subItem.url,page.url) | safe }}>{{subItem.text}}</a>
             </li>
-            {% endif %}
           {% endfor %}
           </ul>
-        </div>
-      </nav>
-    </div>
+        </li>
+        {% else %}
+        <li>
+          <a href="{{item.url}}" {{ helpers.getLinkActiveState(item.url,page.url) | safe }}>{{item.text}}</a>
+        </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+    </nav>
   </div>
 </header>

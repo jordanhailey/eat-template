@@ -1,0 +1,24 @@
+<div id="hours">
+	<h2>Hours</h2>
+	<div class="to-uppercase">
+	{% for day in ops.open %}
+	<table style="margin: 0 auto;">
+		<tbody> 
+			<tr><th>{{day.name}}</th></tr>
+		<tr>
+	{% if day.hours.open and day.hours.close %}
+		<td>{{day.hours.open}} - {{day.hours.close}}</td>
+	{% else %}
+		<td>closed</td>
+	{% endif %}
+		</tr>
+	</tbody>
+	</table>
+	{% endfor %}
+	{% if ops.reservations %}	
+	<p>TODO: SHOW RESERVATION WIDGET</p>
+	{% else %}
+		<p class="fnt__xsm">We are not currently taking reservations.<br>Please join us on a walk-in basis.</p>
+	{% endif %}
+	</div>
+</div>

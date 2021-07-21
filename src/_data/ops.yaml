@@ -30,6 +30,19 @@ open:
       #close: '12am'
 holidays: []
 reservations: false
+company_name: Eat
+locations:
+- name: Eat-A-Lot
+  address:
+    number: 1234 
+    street: NE Glisan St.
+    apt_suite: 
+    city: Portland
+    state_province: OR
+    postal_code: 97213
+  google_maps_link:
+  apple_maps_link:
+  phone: +1-555-555-5555
 manager: 
   name: Joe Manager
   email: mailto:management+joe_manager@eatfoo.com

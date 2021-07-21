@@ -1,0 +1,29 @@
+---
+permalink: '/'
+---
+
+<section class="container hero">{% include 'partials/operations/index.html' %}</section>
+<section class="container">
+	<div class="btn">See our menu</div>
+	<div class="btn">Make a reservation</div>
+	<div class="btn">Place an order for pickup</div>
+</section>
+<section class="container">
+	<div id="social" class="card__panel"> 
+		{% for i in range(0, 12) %}	
+		<div class="card" data-card="{{i}}"></div>
+		{% endfor %}
+	</div>
+	<script>
+		// TODO: create macro
+		let c = document.querySelectorAll('#social > .card');
+		let hue = Math.trunc(360 / (1 * Math.random()));
+		for (i of c) {
+					i.style.background = `hsla(${hue}deg,${100 * Math.random()}%,${100 * Math.random()}%,1)`;
+		}
+	function generateHslaColors (saturation, lightness, alpha, amount) {
+		
+		return [hue,saturation,lightness,alpha]
+	}
+	</script>
+</section>

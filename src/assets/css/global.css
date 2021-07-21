@@ -10,9 +10,11 @@
 	--fnt__xsm:  0.64rem; /* ?? */
 	--fnt__xxs: 0.512rem; /* ?? */
 	--fnt__min:  0.41rem; /* ?? */
-	--main__padding: 1rem;
 	--background-col: #eee;
 	--nav-background-col: #FFEFBA;
+	--max-content-width: 140ch;
+	--min-page-padding: 1rem;
+	--inline-page-padding: max(calc(100vw - var(--max-content-width)),var(--min-page-padding))
 }
 
 
@@ -26,16 +28,20 @@ html *:after {
 	box-sizing: border-box;
 }
 
+.to-uppercase {
+	text-transform: uppercase;
+}
+.center-text {
+	text-align: center;
+}
+
 body {
 	background: var(--background-col);
 	margin: 0;
 }
 
-main > *, main > .container.full-bleed > .wrapper > * {
-	padding: 0 var(--main__padding);
-}
-main > .container.full-bleed, main > .container.full-bleed > .wrapper > .full-width {
-	padding: 0;
+main > * {
+	padding: 0 var(--inline-page-padding);
 }
 
 .fnt__max,
@@ -103,11 +109,10 @@ small {
 	transform: translateX(100%);
 }
 
-.wrapper {
+.container {
 	flex: 1 auto;
 	width: 100%;
 	height: 100%;
-	padding: 0;
 	margin: 0;
 }
 
@@ -126,7 +131,7 @@ small {
 
 .site-header__content {
 	display: grid;
-	grid-template-columns: 1rem [logo-start] 5rem [logo-end] 1fr [nav-start] 10fr [nav-end] 1rem;
+	grid-template-columns: var(--inline-page-padding) [logo-start] 5rem [logo-end] 1fr [nav-start] 10fr [nav-end] var(--inline-page-padding);
 	background: var(--nav-background-col);  /* fallback for old browsers */
 }
 
@@ -138,16 +143,15 @@ small {
 	display: flex;
 	place-items: center;
 	font-size: var(--fnt__max);
+	z-index: 100;
 }
 
 .site-header__nav {
 	grid-area: nav;
 	position: relative;
-}
-
-.site-header__nav > .wrapper {
 	display: flex;
 	place-items: center;
+	justify-content: flex-end;
 }
 
 .site-header, .nav__list, .sub__list {
@@ -180,10 +184,6 @@ li > a, .sub__list > div > span > a {
 	padding: 0 1rem;
 	display: flex;
 	justify-content: flex-end;
-}
-
-.site-header__nav > .wrapper {
-justify-content: flex-end;
 }
 
 .sub__list {
@@ -233,11 +233,6 @@ justify-content: flex-end;
 	top: 0.5rem;
 }
 
-.grid {
-	display: grid;
-	grid-template-columns: var(--cols);
-}
-
 .hours-of-operations {
 	text-transform: capitalize;
 	width: 100%;
@@ -257,6 +252,14 @@ justify-content: flex-end;
 	padding: 0.25rem 0.5rem;
 }
 
+.card__panel {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(max(20ch,30%),1fr));
+	grid-gap: 1rem;
+}
+.card {
+	aspect-ratio: 16/9;
+}
 
 @media only screen and (max-width: 900px) {	
 	:root {

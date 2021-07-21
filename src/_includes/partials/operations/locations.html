@@ -1,0 +1,18 @@
+<div id="locations">
+{% for location in ops.locations %}
+	{% set address = location.address %}	
+	<address {% if location.name %}id="location-{{location.name | slug}}"{% endif %}>
+		{% if location.name %}<div class="addr__name">{{location.name}}</div>{% endif %}
+		<div class="addr__street">{{address.number}} {{address.street}}{% if address.apt_suite %}{{address.apt_suite}}{% endif %}</div>
+		<div class="addr__city__state__postal">{{address.city}}, {{address.state_province}}, {{address.postal_code}}</div>
+		<div class="addr__phone">
+			<a href="tel:{{location.phone}}">{{location.phone}}</a>
+		</div>
+		<div class="addr__maps">
+			<a href="{% if location.google_maps_link %}{{location.google_maps_link}}{% else %}https://www.google.com/maps/place/?q={{ location.name if location.name else ops.company_name}}+{{address.number}}+{{address.street}}+{{address.apt_suite}}+{{address.city}},+{{address.state_province}},+{{address.postal_code}}{% endif %}" target="_blank" rel="noopenner noreferrer">
+				Get directions
+			</a>
+		</div>
+	</address>	
+{% endfor %}
+</div>

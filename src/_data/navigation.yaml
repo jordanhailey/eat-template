@@ -9,5 +9,7 @@ items: # Main navigation links - names and urls
         url: /menu/food
   - text: Reservation
     url: /contact#reservation/
+  - text: Order Out
+    url: /contact#place-order/
   - text: About
     url: /about/
