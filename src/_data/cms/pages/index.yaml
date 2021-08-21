@@ -1,0 +1,27 @@
+---
+permalink: '/'
+body: 
+- header:
+- main: 
+  - section:
+      id: hero
+      composition: flex__three_columns
+      inner: 
+      - div:
+        composition: hidden__sml
+        inner: 
+        - img: 
+          href: foo.jpg
+      - div:
+        inner: 
+        - h1:
+          text: Hello World!
+      - div:
+        composition: hidden__sml
+        inner: 
+        - img: 
+          href: foo.jpg
+- aside:
+- footer:
+
+

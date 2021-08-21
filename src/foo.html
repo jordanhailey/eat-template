@@ -1,0 +1,42 @@
+---
+pagination:
+  data: test
+  size: 1
+  alias: P
+  addAllPagesToCollections: true
+test:
+- permalink: '/'
+  body: 
+  - header:
+  - main: 
+    - section:
+        id: hero
+        composition: flex__three_columns
+        inner: 
+        - div:
+          composition: hidden__sml
+          inner: 
+          - img: 
+            href: foo.jpg
+        - div:
+          inner: 
+          - h1:
+            text: Hello World!
+        - div:
+          composition: hidden__sml
+          inner: 
+          - img: 
+            href: foo.jpg
+  - aside:
+  - footer:
+permalink: "{{ P.permalink }}/"
+tags: all_pages
+layout: layouts/home.html
+---
+{% set page_data = P %}
+{%for node in page_data.body %}
+{%for key, value in node if node %}
+{%if value %}<pre>{{node | dump(2) | safe}}</pre> {%endif%}
+{%endfor%}
+{%endfor%}
+

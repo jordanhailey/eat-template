@@ -14,7 +14,9 @@
       {% for item in navigation.items %}
         {% if item.children %}
         <li class="sub__list open__top">
-          <div class="container"><span class="container"><a href="{{item.url}}" {{ helpers.getLinkActiveState(item.url,page.url) | safe }}>{{item.text}}</a></span></div>
+          <div class="container"><span class="container">
+              <a href="{{item.url}}" {{ helpers.getLinkActiveState(item.url,page.url) | safe }}>{{item.text}}</a>
+            </span></div>
           <ul>
           {% for subItem in item.children %}
             <li>
